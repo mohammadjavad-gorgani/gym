@@ -19,12 +19,12 @@ class ClassService {
     }
 
     async find() {
-        return await this.#model.find({}, { _id: 0, __v: 0, "schedules._id": 0 })
+        return await this.#model.find({}, { __v: 0, "schedules._id": 0 })
     }
 
     async findById(id) {
         if (isValidObjectId(id)) {
-            const classSession = await this.#model.findById(id, { _id: 0, __v: 0, "schedules._id": 0 })
+            const classSession = await this.#model.findById(id, { __v: 0, "schedules._id": 0 })
             if (!classSession) throw new createHttpError.NotFound(ClassMessage.NotFound)
             return classSession
         } else {
