@@ -8,7 +8,6 @@ const StudentSchema = new Schema({
     membershipDate: { type: Date, default: Date.now },
     phoneNumber: { type: String, required: true },
     class: { type: Types.ObjectId, ref: "classe", required: true },
-    attendances: [{ type: Types.ObjectId, ref: "attendance" }],
     payments: [{ type: Types.ObjectId, ref: "payment" }],
     purchases: [{ type: Types.ObjectId, ref: "purchase" }]
 }, { timestamps: true })
