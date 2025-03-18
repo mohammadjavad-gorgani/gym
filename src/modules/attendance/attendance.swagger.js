@@ -50,3 +50,19 @@
  *          201:
  *              description: created
  */
+
+/**
+ * @swagger
+ * /attendance/{id}:
+ *  get:
+ *      summary: get report of student attendances by studentId
+ *      tags:
+ *          -   Attendance
+ *      parameters:
+ *          -   in: path
+ *              name: id
+ *              type: string
+ *      responses:
+ *          200:
+ *              descriptions: successfully
+ */

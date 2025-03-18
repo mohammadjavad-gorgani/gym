@@ -21,6 +21,16 @@ class AttendanceController {
             next(error)
         }
     }
+
+    async findByStudentId(req, res, next) {
+        try {
+            const { id } = req.params
+            const studentAttendances = await this.#service.findByStudentId(id)
+            return res.json(studentAttendances)
+        } catch (error) {
+            next(error)
+        }
+    }
 }
 
 module.exports = new AttendanceController()
