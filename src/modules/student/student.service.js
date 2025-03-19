@@ -5,14 +5,17 @@ const createHttpError = require("http-errors")
 const StudentMessage = require("./student.messages")
 const ClassMessage = require("../class/class.messages")
 const { isValidObjectId } = require("mongoose")
+const AttendanceModel = require("../attendance/attendance.model")
 
 class StudentService {
     #model
     #classModel
+    #attendanceModel
     constructor() {
         autoBind(this)
         this.#model = StudentModel
         this.#classModel = ClassModel
+        this.#attendanceModel = AttendanceModel
     }
 
     async create(studentDto) {
@@ -32,6 +35,15 @@ class StudentService {
             path: 'class',
             select: 'title coachName -_id'
         });
+    }
+
+    async report(studentId) {
+        const student = await this.#model.findById(studentId).populate("payments class")
+        const attendance = await this.#attendanceModel.find({ studentId })
+        return {
+            student,
+            attendance
+        }
     }
 
     async findById(id) {

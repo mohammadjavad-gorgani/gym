@@ -92,6 +92,22 @@
 
 /**
  * @swagger
+ * /student/{id}/report:
+ *  get:
+ *      summary: get student report by studentId
+ *      tags:
+ *          - Student
+ *      parameters:
+ *          -   in: path
+ *              name: id
+ *              type: string
+ *      responses:
+ *          200:
+ *              description: successfully
+ */
+
+/**
+ * @swagger
  * /student/{id}:
  *  put:
  *      summary: update student by id

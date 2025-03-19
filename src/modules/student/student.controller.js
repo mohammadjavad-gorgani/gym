@@ -32,6 +32,16 @@ class StudentController {
         }
     }
 
+    async report(req, res, next) {
+        try {
+            const { id } = req.params
+            const report = await this.#service.report(id)
+            return res.json(report)
+        } catch (error) {
+            next(error)
+        }
+    }
+
     async findById(req, res, next) {
         try {
             const { id } = req.params
